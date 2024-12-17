@@ -1,21 +1,26 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {Task} from "../../types";
 
 
 interface State {
     tasks: Task[]
 }
 
-const initialState = {
+const initialState: State = {
     tasks: []
+}
+
+interface Action {
+    payload: string
 }
 
 export const taskSlice = createSlice({
     name: "tasks",
     initialState,
     reducers: {
-        addTask: (state, action) => {
+        addTask: (state, action: Action) => {
             state.tasks.push({
-                task: action.payload,
+                message: action.payload,
                 status: "active"
             })
         },
